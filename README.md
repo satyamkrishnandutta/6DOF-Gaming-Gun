@@ -65,10 +65,17 @@ Unlike standard gamepads, this controller separates movement and aiming into two
 **Solution:** Implemented a software-side "Deadzone Filter" that ignores angular velocity values below a threshold (`int deadzone = 250`), ensuring the aim remains steady when holding angles.
 
 ## 📸 Media
-<img width="400" alt="Vero Board Top" src="https://github.com/user-attachments/assets/09eda3fa-e126-47c4-a018-a352c4fa361c" />
-<img width="400" alt="Solder Joints" src="https://github.com/user-attachments/assets/13858aef-f6aa-402c-bba3-82357c88042e" />
-<img width="400" alt="Matrix Display" src="https://github.com/user-attachments/assets/7d7751a9-da1e-4525-ba9e-0d000e07b971" />
-<video width="600" src="https://github.com/user-attachments/assets/d4a1c36e-dcb0-4c65-b187-6e5f52100ee3" controls="controls"></video>3
+<table>
+  <tr>
+    <td width="33%"><img src="https://github.com/user-attachments/assets/09eda3fa-e126-47c4-a018-a352c4fa361c" alt="Controller Close Up" /></td>
+    <td width="33%"><img src="https://github.com/user-attachments/assets/13858aef-f6aa-402c-bba3-82357c88042e" alt="Full Assembly View 1" /></td>
+    <td width="33%"><img src="https://github.com/user-attachments/assets/7d7751a9-da1e-4525-ba9e-0d000e07b971" alt="Full Assembly View 2" /></td>
+  </tr>
+</table>
+
+### 🎥 Live Gameplay Demonstration
+
+https://github.com/user-attachments/assets/d4a1c36e-dcb0-4c65-b187-6e5f52100ee3
 
 
 
