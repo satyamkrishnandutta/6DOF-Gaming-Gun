@@ -65,8 +65,10 @@ Unlike standard gamepads, this controller separates movement and aiming into two
 **Solution:** Implemented a software-side "Deadzone Filter" that ignores angular velocity values below a threshold (`int deadzone = 250`), ensuring the aim remains steady when holding angles.
 
 ## 📸 Media
-*(Add your photos here! Edit this section to include links to your images)*
-> ![Prototype Image](LINK_TO_YOUR_IMAGlE_HERE)
+<img width="1576" height="2914" alt="IMG_20251222_162754907 jpg" src="https://github.com/user-attachments/assets/09eda3fa-e126-47c4-a018-a352c4fa361c" />
+<img width="3834" height="956" alt="IMG_20251222_162814207 jpg" src="https://github.com/user-attachments/assets/13858aef-f6aa-402c-bba3-82357c88042e" />
+<img width="4096" height="1492" alt="IMG_20251222_162845795 jpg" src="https://github.com/user-attachments/assets/7d7751a9-da1e-4525-ba9e-0d000e07b971" />
+
 
 
 ---
