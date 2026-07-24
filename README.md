@@ -5,7 +5,7 @@ A dual-microcontroller haptic input device using ESP32 (BLE) and Arduino Pro Mic
 
 A custom-engineered dual-unit Haptic Interface Device (HID) designed for FPS gaming. This project splits control inputs between two independent microcontrollers to emulate a fully functional keyboard and mouse setup using physical motion and gesture tracking.
 
-![Project Status](https://img.shields.io/badge/Status-Prototype-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 ![Platform](https://img.shields.io/badge/Platform-ESP32%20%7C%20Arduino-blue)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-green)
 
