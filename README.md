@@ -68,7 +68,7 @@ Unlike standard gamepads, this controller separates movement and aiming into two
 <img width="1576" height="2914" alt="IMG_20251222_162754907 jpg" src="https://github.com/user-attachments/assets/09eda3fa-e126-47c4-a018-a352c4fa361c" />
 <img width="3834" height="956" alt="IMG_20251222_162814207 jpg" src="https://github.com/user-attachments/assets/13858aef-f6aa-402c-bba3-82357c88042e" />
 <img width="4096" height="1492" alt="IMG_20251222_162845795 jpg" src="https://github.com/user-attachments/assets/7d7751a9-da1e-4525-ba9e-0d000e07b971" />
-https://github.com/user-attachments/assets/d4a1c36e-dcb0-4c65-b187-6e5f52100ee3
+*Video : *https://github.com/user-attachments/assets/d4a1c36e-dcb0-4c65-b187-6e5f52100ee3
 
 
 
