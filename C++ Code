@@ -1,0 +1,85 @@
+#include <Wire.h>
+#include <MPU6050.h>
+#include <Mouse.h>
+
+MPU6050 mpu;
+int16_t ax, ay, az, gx, gy, gz;
+
+// --- PIN DEFINITIONS --- // 
+const int TRIGGER_PIN = 9; 
+const int SCOPE_PIN = 8;
+const int SENS_UP_PIN = 4;   // Slows down aim for precision
+const int SENS_DOWN_PIN = 5; // Speeds up aim for turning
+const int RESET_PIN = 6;     // "Clutch" button - hold to freeze crosshair
+
+// --- CALIBRATION (TUNE THESE!!!) --- //
+// Higher sensitivity value =>> SLOWER mouse movement //
+int sensitivity = 400; 
+
+// Deadzone filters out hand shake/micro-tremors. //
+// If the crosshair crawls while holding still, increase this. //
+int deadzone = 250; 
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  
+  Serial.println("Initializing MPU...");
+  mpu.initialize();
+  
+  if(mpu.testConnection()) {
+    Serial.println("MPU6050 Connected!");
+  } else {
+    Serial.println("MPU6050 Connection Failed! Check wiring.");
+  }
+  pinMode(TRIGGER_PIN, INPUT_PULLUP);
+  pinMode(SCOPE_PIN, INPUT_PULLUP);
+  pinMode(SENS_UP_PIN, INPUT_PULLUP);
+  pinMode(SENS_DOWN_PIN, INPUT_PULLUP);
+  pinMode(RESET_PIN, INPUT_PULLUP);
+  Mouse.begin();
+}
+
+void loop() {
+  // --- ON-THE-FLY SENSITIVITY --- //
+  if (digitalRead(SENS_UP_PIN) == LOW) {
+    sensitivity += 20; 
+    if (sensitivity > 1000) sensitivity = 1000;
+    delay(100); 
+  }
+  if (digitalRead(SENS_DOWN_PIN) == LOW) {
+    sensitivity -= 20; 
+    if (sensitivity < 50) sensitivity = 50; 
+    delay(100);
+  }
+  // --- GYRO AIMING (WITH CLUTCH) --- //
+  if (digitalRead(RESET_PIN) == HIGH) { 
+    mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
+    
+    // Deadzone filter to stop sensor drift //
+    if (abs(gz) < deadzone) gz = 0;
+    if (abs(gy) < deadzone) gy = 0;
+
+    // Map gyro data to mouse coordinates //
+    // Invert the axis here with a '-' sign if aiming is reversed //
+    int moveX = (gz / sensitivity); 
+    int moveY = (gy / sensitivity);
+    
+    if (moveX != 0 || moveY != 0) {
+      Mouse.move(moveX, moveY);
+    }
+  }
+  // --- MOUSE CLICKS --- //
+  if (digitalRead(TRIGGER_PIN) == LOW) {
+    if (!Mouse.isPressed(MOUSE_LEFT)) Mouse.press(MOUSE_LEFT);
+  } else {
+    if (Mouse.isPressed(MOUSE_LEFT)) Mouse.release(MOUSE_LEFT);
+  }
+  
+  if (digitalRead(SCOPE_PIN) == LOW) {
+    if (!Mouse.isPressed(MOUSE_RIGHT)) Mouse.press(MOUSE_RIGHT);
+  } else {
+    if (Mouse.isPressed(MOUSE_RIGHT)) Mouse.release(MOUSE_RIGHT);
+  }
+  delay(10);
+}
